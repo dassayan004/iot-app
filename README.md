@@ -17,6 +17,23 @@ This project uses **[`uv`](https://github.com/astral-sh/uv)** for dependency man
 
 ## Initial Setup
 
+- **_Makefile Command Reference_**
+
+```bash
+➜ make help
+
+Available commands:
+  make venv        Create virtual environment
+  make install     Install dependencies
+  make run-modbus  Run Modbus TCP server
+  make run-mqtt    Run MQTT publisher
+  make run-client  Run Modbus TCP client
+  make lint        Run ruff lint checks
+  make format      Format code (black + isort)
+  make fix         Auto-fix lint + format
+  make clean       Remove virtual environment
+```
+
 1. **Create a virtual environment**
 
 ```bash
@@ -103,22 +120,6 @@ make format
 
 ```bash
 make fix
-```
-
----
-
-## Useful Commands
-
-List all available Makefile commands:
-
-```bash
-make help
-```
-
-Remove the virtual environment:
-
-```bash
-make clean
 ```
 
 ---
