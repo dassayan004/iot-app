@@ -1,13 +1,10 @@
+import random
 import threading
 import time
-import random
-from pymodbus.server import StartTcpServer
-from pymodbus.datastore import (
-    ModbusServerContext,
-    ModbusDeviceContext,
-    ModbusSequentialDataBlock,
-)
 
+from pymodbus.datastore import (ModbusDeviceContext, ModbusSequentialDataBlock,
+                                ModbusServerContext)
+from pymodbus.server import StartTcpServer
 
 MODBUS_PORT = 5020
 SLAVE_ID = 1

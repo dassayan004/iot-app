@@ -1,5 +1,6 @@
-from pymodbus.client import ModbusTcpClient
 import time
+
+from pymodbus.client import ModbusTcpClient
 
 MODBUS_HOST = "localhost"
 MODBUS_PORT = 5020

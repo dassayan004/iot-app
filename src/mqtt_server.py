@@ -1,7 +1,7 @@
 import json
 import random
-import time
 import signal
+import time
 
 import paho.mqtt.client as mqtt
 from paho.mqtt.enums import CallbackAPIVersion
