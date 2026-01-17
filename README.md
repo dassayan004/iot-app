@@ -39,16 +39,20 @@ Available commands:
 ```bash
 make venv
 ```
+
 2. **Activate the virtual environment**
 
-  _Linux / macOS_
-  ```bash
-  source .venv/bin/activate
-  ```
-  _Windows (PowerShell)_
-  ```bash
-  .venv\Scripts\Activate.ps1
-  ```
+- _Linux / macOS_
+
+```bash
+source .venv/bin/activate
+```
+
+- _Windows (PowerShell)_
+
+```bash
+.venv\Scripts\Activate.ps1
+```
 
 3. **Install dependencies**
 
