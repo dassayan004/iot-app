@@ -1,0 +1,118 @@
+[
+    {
+        "id": "3fb85c912afa0943",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cfdb9c65edc3caab",
+        "type": "modbus-read",
+        "z": "3fb85c912afa0943",
+        "name": "Read Temperature",
+        "topic": "",
+        "showStatusActivities": false,
+        "logIOActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "0",
+        "quantity": "2",
+        "rate": "2",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "server": "f596bfa4e1ee17ac",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 530,
+        "y": 220,
+        "wires": [
+            [
+                "b63a6e62eed1bc7a"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "512219127798901e",
+        "type": "debug",
+        "z": "3fb85c912afa0943",
+        "name": "debug MODBUS",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "b63a6e62eed1bc7a",
+        "type": "function",
+        "z": "3fb85c912afa0943",
+        "name": "function modbus(PARSER)",
+        "func": "const rawTemp = msg.payload[0]; // HR0\nconst status = msg.payload[1];  // HR1\n\nmsg.payload = {\n    temperature: rawTemp / 10,\n    status: status === 1 ? \"OK\" : \"FAULT\"\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 220,
+        "wires": [
+            [
+                "512219127798901e"
+            ]
+        ]
+    },
+    {
+        "id": "f596bfa4e1ee17ac",
+        "type": "modbus-client",
+        "name": "Dummy-Modbus",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "5020",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 3000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "d01f0b51c370c676",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-modbus": "5.45.2"
+        }
+    }
+]
